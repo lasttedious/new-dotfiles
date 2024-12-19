@@ -47,7 +47,7 @@ vim.opt.backup = false
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.backspace = { "start", "eol", "indent" }
 
-vim.opt.shell = "fish"
+vim.opt.shell = "zsh"
 
 vim.opt.guicursor = "n-v-c-sm:block,ve:ver25,r-o:hor20"
 vim.opt.cursorline = true
@@ -62,22 +62,3 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.formatoptions:append({ "r" })
 vim.opt.clipboard:append({ "unnamedplus" })
 vim.diagnostic.config({ update_in_insert = true })
-
-local path_package = vim.fn.stdpath("data") .. "/site/"
-local mini_path = path_package .. "pack/deps/start/mini.nvim"
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/echasnovski/mini.nvim",
-    mini_path,
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd("packadd mini.nvim | helptags ALL")
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
-
-require("mini.deps").setup({ path = { package = path_package } })
-

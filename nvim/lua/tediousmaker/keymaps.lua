@@ -29,8 +29,9 @@ map("n", "tH", "<cmd>-tabmove<cr>")
 map("n", "tt", "<cmd>tab split<cr>")
 
 map("n", "<C-a>", "gg<S-v>G")
-map("n", "<leader>s", ":%s/", { desc = "Search and replace" })
-map("v", "<leader>s", ":s/", { desc = "Search and replace" })
+map("n", "<leader>ss", "<cmd>noh<cr>", { desc = "Cancel search" })
+map("n", "<leader>sr", ":%s/", { desc = "Search and replace" })
+map("v", "<leader>sr", ":s/", { desc = "Search and replace" })
 
 map("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "Restart the current attached lsp" })
 
@@ -55,6 +56,17 @@ map("i", "<C-u>", "<esc>u")
 map("i", "<C-o>", "<esc>O")
 map("i", "<C-Enter>", "<esc>o")
 
-map("n", "<C-u>", "<cmd>DepsClean<cr><cmd>w<cr><cmd>DepsUpdate<cr><cmd>w<cr>")
-map("n", "<leader>cp", "<cmd>MarkdownPreview<cr>")
-map("n", "<C-e>", "<cmd>Neotree toggle<cr>")
+map("n", "<C-d>", "dd")
+
+map("n", "<C-u>", "<cmd>DepsClean<cr><cmd>w<cr><cmd>DepsUpdate<cr><cmd>w<cr>", { desc = "Update packages" })
+map("n", "<leader>cp", "<cmd>MarkdownPreview<cr>", { desc = "Markdown Preview" })
+
+-- Telescope specific
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", { desc = "Find files" })
+map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Find diagnostics" })
+map("n", "<leader>fw", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Find words" })
+map("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
+map("n", "<leader>fc", "<cmd>Telescope git_commitscr>", { desc = "Find git commits" })
+map("n", "<leader>fb", "<cmd>Telescope git_branches<cr>", { desc = "Find git branches" })
+map("n", "<leader>fg", "<cmd>Telescope git_status<cr>", { desc = "Find git statsu" })
+map("n", "<leader>fl", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Find files" })
